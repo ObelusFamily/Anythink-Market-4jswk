@@ -1,6 +1,7 @@
 version: "3.8"
 services:
   anythink-backend-python:
+    init: true
     build: ./backend
     container_name: anythink-backend-python
     command: >
@@ -23,12 +24,16 @@ services:
     depends_on:
       - "postgres-python"
   anythink-frontend-react:
+    init: true
     build: ./frontend
     container_name: anythink-frontend-react
     command: sh -c "cd frontend && yarn install && yarn start"
     environment:
       - NODE_ENV=development
       - PORT=3001
+      - REACT_APP_CODESPACES=${CODESPACES}
+      - REACT_APP_CODESPACE_NAME=${CODESPACE_NAME}
+      - REACT_APP_CODESPACES_BACKEND_PORT=3000
     working_dir: /usr/src
     volumes:
       - ./:/usr/src/
