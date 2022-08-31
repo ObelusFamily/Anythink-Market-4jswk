@@ -1,6 +1,7 @@
 version: "3.8"
 services:
   anythink-backend-node:
+    init: true
     build: ./backend
     container_name: anythink-backend-node
     command: sh -c "cd backend && yarn install && /wait-for-it.sh mongodb-node:27017 -q -t 60 && yarn dev"
@@ -19,6 +20,7 @@ services:
       - "mongodb-node"
 
   anythink-frontend-react:
+    init: true
     build: ./frontend
     container_name: anythink-frontend-react
     command: sh -c "cd frontend && yarn install && yarn start"
@@ -36,6 +38,7 @@ services:
       - "3001:3001"
 
   mongodb-node:
+    init: true
     container_name: mongodb-node
     restart: always
     image: mongo
