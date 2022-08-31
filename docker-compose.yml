@@ -25,6 +25,9 @@ services:
     environment:
       - NODE_ENV=development
       - PORT=3001
+      - REACT_APP_CODESPACES=${CODESPACES}
+      - REACT_APP_CODESPACE_NAME=${CODESPACE_NAME}
+      - REACT_APP_CODESPACES_BACKEND_PORT=3000
     working_dir: /usr/src
     volumes:
       - ./:/usr/src/
