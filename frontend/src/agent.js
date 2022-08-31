@@ -13,11 +13,7 @@ const CODESPACES = {
   url: `https://${CODESPACE_NAME}-${CODESPACES_BACKEND_PORT}.githubpreview.dev/api`,
 };
 
-const API_ROOT =
-  process.env.NODE_ENV !== "production"
-    ? IS_CODESPACES
-      ? CODESPACES.url
-      : "http://localhost:3000/api"
+const API_ROOT = process.env.NODE_ENV !== "production" ? IS_CODESPACES ? CODESPACES.url: "http://localhost:3000/api" : "https://api.anythink.market/api";;
 
 const encode = encodeURIComponent;
 const responseBody = (res) => res.body;
